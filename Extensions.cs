@@ -1,14 +1,13 @@
 ﻿using UnityEngine;
 using System.Collections.Generic;
 
-namespace SalusGames.Extentions
+namespace SalusGames.Extensions
 {
-    public static class Extentions
+    public static class Extensions
     {
         /// <summary>
         /// Destroy's all the children
         /// </summary>
-        /// <param name="transform">The parent transform</param>
         public static void DestroyChildren(this Transform transform)
         {
             foreach (Transform child in transform)
@@ -20,7 +19,6 @@ namespace SalusGames.Extentions
         /// <summary>
         /// Hide's the canvas group
         /// </summary>
-        /// <param name="canvasGroup">The Canvas Group to hide</param>
         public static void Hide(this CanvasGroup canvasGroup)
         {
             canvasGroup.alpha = 0;
@@ -29,11 +27,19 @@ namespace SalusGames.Extentions
         }
 
         /// <summary>
+        /// Returns a random color with alpha of 1
+        /// </summary>
+        public static void RandomColor(this Color color)
+        {
+            color.r = Random.Range(0f, 1f);
+            color.g = Random.Range(0f, 1f);
+            color.b = Random.Range(0f, 1f);
+            color.a = 1;
+        }
+
+        /// <summary>
         /// Returns a random value
         /// </summary>
-        /// <typeparam name="T"></typeparam>
-        /// <param name="iList">The list to get a random value from</param>
-        /// <returns></returns>
         public static T RandomValue<T>(this IList<T> iList)
         {
             int randomIndex = Random.Range(0, iList.Count);
@@ -44,9 +50,6 @@ namespace SalusGames.Extentions
         /// <summary>
         /// Returns a random value and then removes it from the list
         /// </summary>
-        /// <typeparam name="T"></typeparam>
-        /// <param name="iList">The list to get a random value from</param>
-        /// <returns></returns>
         public static T RandomValueAndRemove<T>(this IList<T> iList)
         {
             int randomIndex = Random.Range(0, iList.Count);
@@ -59,7 +62,6 @@ namespace SalusGames.Extentions
         /// <summary>
         /// Show's the canvas group
         /// </summary>
-        /// <param name="canvasGroup">The Canvas Group to show</param>
         public static void Show(this CanvasGroup canvasGroup)
         {
             canvasGroup.alpha = 1;
@@ -70,7 +72,6 @@ namespace SalusGames.Extentions
         /// <summary>
         /// Toggles the canvas group between showing and hiding
         /// </summary>
-        /// <param name="canvasGroup">The Canvas Group to toggle</param>
         public static void Toggle(this CanvasGroup canvasGroup)
         {
             canvasGroup.alpha = (canvasGroup.alpha == 1f) ? 0f : 1f;
